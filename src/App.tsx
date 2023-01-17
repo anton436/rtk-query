@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useEffect, useState } from "react";
+import AddPost from "./components/AddPost";
+import EditPost from "./components/EditPost";
+import Navbar from "./components/Navbar";
+import PostContainer from "./components/PostContainer";
+import { useAppDispatch, useAppSelector } from "./hooks/redux";
+import MainRoutes from "./routes/MainRoutes";
+import { fetchUsers } from "./store/reducers/ActionCreators";
+import { userSlice } from "./store/reducers/UserSlice";
 
-function App() {
+const App: FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useAppDispatch();
+
+  const { users, isLoading, error } = useAppSelector(
+    (state) => state.userReducer
+  );
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar />
+      {isLoading && <h1> loading</h1>}
+      {error && <h1>{error}</h1>}
+      {users.map((user) => (
+        <div key={user.id}>
+          {user.id}. {user.name}
+        </div>
+      ))}
+      <hr />
+
+      <MainRoutes />
     </div>
   );
-}
+};
 
 export default App;

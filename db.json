@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "title": "aaa",
+      "body": "222",
+      "userId": 777,
+      "id": 22
+    },
+    {
+      "title": "azret",
+      "body": "pidor",
+      "userId": 777,
+      "id": 23
+    },
+    {
+      "title": "cccc",
+      "body": "wwww",
+      "userId": 777,
+      "id": 24
+    },
+    {
+      "title": "ggggg",
+      "body": "aa",
+      "userId": 777,
+      "id": 26
+    },
+    {
+      "title": "GOOOOOO",
+      "body": "213",
+      "userId": 777,
+      "id": 27
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
